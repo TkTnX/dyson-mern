@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic);
+@import "tailwindcss";
+
+@font-face {
+  font-family: "NAMU Pro";
+  src: url("./shared/fonts/namu_pro.eot"); /* IE 9 Compatibility Mode */
+  src: url("./shared/fonts/namu_pro.eot?#iefix") format("embedded-opentype"),
+    /* IE < 9 */ url("./shared/fonts/namu_pro.woff2") format("woff2"),
+    /* Super Modern Browsers */ url("./shared/fonts/namu_pro.woff")
+      format("woff"),
+    /* Firefox >= 3.6, any other modern browser */
+      url("./shared/fonts/namu_pro.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("./shared/fonts/namu_pro.svg#namu_pro")
+      format("svg"); /* Chrome < 4, Legacy iOS */
+}
+
+:root {
+  --font-family: "Open Sans", sans-serif;
+  --second-family: "NAMU Pro", sans-serif;
+  --font-size: 18px;
+  --font-weight: 400;
+  --text-color: #111;
+  --accent-color: #c5358c;
+}
+
+@theme {
+  --color-text: var(--text-color);
+  --color-accent: var(--accent-color);
+  --text-base: var(--font-size);
+  --font-weight-base: var(--font-weight);
+  --font-family: var(--font-family);
+  --font-second: var(--second-family);
+}
+
+body {
+  @apply text-text text-base font-base font-family;
+}
+
+.container {
+  @apply max-w-[1384px] mx-auto px-3;
+}
+
+button {
+  @apply cursor-pointer;
+}
