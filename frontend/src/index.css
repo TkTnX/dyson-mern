@@ -21,15 +21,18 @@
   --font-weight: 400;
   --text-color: #111;
   --accent-color: #c5358c;
+  --green-color: #68ae5c;
 }
 
 @theme {
   --color-text: var(--text-color);
   --color-accent: var(--accent-color);
+  --color-green: var(--green-color);
   --text-base: var(--font-size);
   --font-weight-base: var(--font-weight);
   --font-family: var(--font-family);
   --font-second: var(--second-family);
+  --breakpoint-vsm: 475px;
 }
 
 body {
@@ -42,4 +45,12 @@ body {
 
 button {
   @apply cursor-pointer;
+}
+
+section {
+  @apply mt-7.5 sm:mt-15 md:mt-37.5;
+}
+
+select {
+  @apply bg-none;
 }
