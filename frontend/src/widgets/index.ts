@@ -6,4 +6,6 @@ export * from "./WhyWe";
 export * from "./Offers";
 export * from "./Reviews";
 export * from "./Faq";
-export * from "./News"
+export * from "./News";
+export * from "./Contact";
+export * from "./Footer";
