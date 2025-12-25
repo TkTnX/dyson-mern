@@ -6,7 +6,7 @@ export const Opinion = () => {
           <h3 className="font-black text-xl sm:text-2xl md:text-5xl font-second">
             Мнение экспертов о технике Dyson
           </h3>
-          <div className="mt-10 text-xs md:text-base flex flex-col gap-7.5">
+          <div className="mt-10 text-xs md:text-base flex flex-col gap-7.5 pb-20">
             <p>
               Сегодня многие стилисты и салоны красоты в своей работе используют
               технику от Dyson.

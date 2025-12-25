@@ -7,7 +7,10 @@ export const Header = () => {
     <header className="bg-black">
       <div className="container flex items-center justify-between gap-1 2xl:gap-12 py-1.5">
         <button>
-          <MenuIcon size={50} color="#fff" />
+          <MenuIcon
+            size={50}
+            color="#fff"
+          />
         </button>
         <Link className="md:mr-0 mr-auto" to={"/"}>
           <img src="/images/icons/logo.svg" alt="Logo" />
