@@ -7,7 +7,7 @@ export const Offers = () => {
   return (
     <section className="bg-[#f8f8f8] ">
       <div className="container py-37.5">
-        <h2 className="mt-7.5 text-xl sm:text-3xl md:text-5xl font-black">
+        <h2 className="title">
           Спецпредложения <span className="text-accent">14</span>
         </h2>
         <Select  options={SORT_SELECT_ITEMS} />

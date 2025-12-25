@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import { useState, type HTMLAttributes } from "react";
+import { type HTMLAttributes } from "react";
 
 interface Props extends HTMLAttributes<HTMLSelectElement> {
   options: { label: string; value: string }[];

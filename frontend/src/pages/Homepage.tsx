@@ -1,4 +1,13 @@
-import { CategoriesList, Hero, Offers, Opinion, WhyWe } from "../widgets";
+import {
+  CategoriesList,
+  Faq,
+  Hero,
+  News,
+  Offers,
+  Opinion,
+  Reviews,
+  WhyWe,
+} from "../widgets";
 
 export const Homepage = () => {
   return (
@@ -8,6 +17,9 @@ export const Homepage = () => {
       <Opinion />
       <WhyWe />
       <Offers />
+      <Reviews />
+      <Faq />
+      <News />
     </>
   );
 };

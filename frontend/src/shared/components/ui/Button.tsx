@@ -3,12 +3,23 @@ import type { HTMLAttributes } from "react";
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
+  variant?: "default" | "outline";
 }
 
-export const Button = ({ children, className, ...props }: Props) => {
+export const Button = ({
+  children,
+  className,
+  variant = "default",
+  ...props
+}: Props) => {
+  const style =
+    variant === "outline"
+      ? "border border-black bg-transparent text-black hover:text-white"
+      : "bg-accent text-white";
+
   return (
     <button
-      className={` rounded-sm py-2 px-6.5  md:py-3.75 md:px-12.5 bg-accent text-white text-base md:text-2xl hover:bg-black transition ${className}`}
+      className={` rounded-sm py-2 px-6.5  md:py-3.75 md:px-12.5   text-base md:text-2xl hover:bg-black transition ${style} ${className}`}
       {...props}
     >
       {children}

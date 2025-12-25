@@ -54,3 +54,7 @@ section {
 select {
   @apply bg-none;
 }
+
+.title {
+  @apply mt-7.5 text-xl sm:text-3xl md:text-5xl font-black;
+}
