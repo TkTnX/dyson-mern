@@ -1,7 +1,9 @@
 import { useParams } from "react-router";
 import { useProducts } from "../shared/hooks";
 import { Breadcrumbs, ErrorMessage, Skeleton } from "../shared/components";
-import { BigProduct } from "../entities";
+import { BigProduct, BigProductTabs } from "../entities";
+import { Faq, SimmilarProductsList } from "../widgets";
+import { Play } from "lucide-react";
 
 export const ProductPage = () => {
   const { productId } = useParams();
@@ -25,9 +27,17 @@ export const ProductPage = () => {
           ))}
         </div>
       ) : (
-        <section className="container">
-          <BigProduct product={data} />
-        </section>
+        <>
+          <section className="container">
+            <BigProduct product={data} />
+          </section>
+          <BigProductTabs product={data} />
+          <Faq />
+          <div className="container bg-[#e2e2e2] w-full h-190 flex items-center justify-center">
+            <Play size={100} fill="#fff" color="#fff" />
+          </div>
+          <SimmilarProductsList />
+        </>
       )}
     </>
   );

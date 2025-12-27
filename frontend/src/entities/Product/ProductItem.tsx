@@ -36,20 +36,18 @@ export const ProductItem = ({ product }: Props) => {
             )}
           </div>
           <div className="flex flex-wrap  lg:flex-col xl:flex-row items-end justify-between px-2.5 lg:px-10">
+            <h6 className="font-second text-xl lg:text-5xl font-black">
+              {/* TODO: ADD FORMAT FUNCTION */}
+              {product.discount ? product.price - discount! : product.price}Р
+            </h6>
+
             {product.discount && (
-              <h6 className="font-second text-xl lg:text-5xl font-black">
-                {/* TODO: ADD FORMAT FUNCTION */}
-                {product.price - discount!}Р
-              </h6>
+              <p
+                className={`font-second text-xs  lg:text-2xl font-black line-through text-gray-500 `}
+              >
+                {product.price} Р
+              </p>
             )}
-            <p
-              className={`font-second text-xl lg:text-5xl font-black ${
-                product.discount &&
-                "line-through text-[#ababab]  text-xs  lg:text-2xl"
-              } `}
-            >
-              {product.price} Р
-            </p>
           </div>
         </div>
         <div className="flex flex-col 2xl:flex-row items-stretch relative z-2">

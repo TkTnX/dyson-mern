@@ -19,26 +19,24 @@ const productSchema = new Schema(
     images: {
       type: [String],
     },
-    complectation: {
-      type: Schema.Types.ObjectId,
-      ref: "Complectation",
-    },
-    specifications: {
+    complectation: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Complectation",
+      },
+    ],
+    specifications: [{
       type: Schema.Types.ObjectId,
       ref: "Specification",
-    },
-    faq: {
-      type: Schema.Types.ObjectId,
-      ref: "Faq",
-    },
-    reviews: {
-      type: Schema.Types.ObjectId,
-      ref: "Review",
-    },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-    },
+    }],
+    // reviews: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Review",
+    // }],
+    // category: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "Category",
+    // },
   },
   { timestamps: true }
 );

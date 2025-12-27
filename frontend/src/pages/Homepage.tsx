@@ -1,6 +1,6 @@
 import {
   CategoriesList,
-  Contact,
+
   Faq,
   Hero,
   News,
@@ -21,7 +21,6 @@ export const Homepage = () => {
       <Reviews />
       <Faq />
       <News />
-      <Contact />
     </>
   );
 };

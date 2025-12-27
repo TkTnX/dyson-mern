@@ -16,7 +16,7 @@ export const Faq = () => {
   return (
     <section className="bg-[#f8f8f8]">
       <div className="container py-37.5 ">
-        <h2 className="font-black text-5xl font-second">
+        <h2 className="font-black text-2xl sm:text-3xl md:text-5xl font-second">
           FAQ — Часто задаваемые вопросы
         </h2>
 

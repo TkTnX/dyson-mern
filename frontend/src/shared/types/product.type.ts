@@ -1,3 +1,6 @@
+import type { IComplecation } from "./complectation.type";
+import type { ISpecification } from "./specification.type";
+
 export interface IProduct {
   _id: string;
   title: string;
@@ -6,4 +9,7 @@ export interface IProduct {
   discount?: number;
   images: string[];
   isStock: boolean;
+
+  complectation: IComplecation[];
+  specifications: ISpecification[];
 }

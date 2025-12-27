@@ -9,3 +9,8 @@ export * from "./Faq";
 export * from "./News";
 export * from "./Contact";
 export * from "./Footer";
+export * from "./ComplectationList";
+export * from "./SpecificationsList";
+export * from "./Delivery"
+export * from "./Payment"
+export * from "./SimmilarProductsList"

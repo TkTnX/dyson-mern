@@ -2,19 +2,36 @@ import { Heart } from "lucide-react";
 import type { IProduct } from "../../shared/types";
 import { ProductCounter } from "../../features";
 import { Button } from "../../shared/components";
+import { useState } from "react";
 
 interface Props {
   product: IProduct;
 }
 
 export const BigProduct = ({ product }: Props) => {
+  const [currentImage, setCurrentImage] = useState(0);
   const discount = product.discount && (product.price / 100) * product.discount;
 
   return (
     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-4">
-      <div className="relative w-fit">
-        {/* TODO: Сделать как на макете */}
-        <img src={product.images[0]} alt={product.title} />
+      <div className="relative w-fit flex flex-col-reverse sm:flex-row items-start gap-6">
+        <div className=" flex sm:flex-col w-full">
+          {product.images.map((image, index) => (
+            <button onClick={() => setCurrentImage(index)} key={index}>
+              <img
+                className={`w-16 h-16 md:w-23.75 md:h-23.75 object-cover ${
+                  currentImage !== index && "opacity-50"
+                }`}
+                src={image}
+              />
+            </button>
+          ))}
+        </div>
+        <img
+          className="lg:w-137.5 "
+          src={product.images[currentImage]}
+          alt={product.title}
+        />
         <button className="absolute right-0 top-0">
           <Heart size={40} />
         </button>

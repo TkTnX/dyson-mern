@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import { connectToDb } from "./libs/connectToDb.js";
 import productRouter from "./routes/product.route.js";
+import "./models/complectation.model.js";
+import "./models/specification.model.js";
+
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -10,7 +13,7 @@ app.use(
   cors({
     origin: process.env.CLIENT_URL,
     optionsSuccessStatus: 200,
-    credentials: true
+    credentials: true,
   })
 );
 
