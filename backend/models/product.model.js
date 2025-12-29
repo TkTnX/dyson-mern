@@ -25,18 +25,20 @@ const productSchema = new Schema(
         ref: "Complectation",
       },
     ],
-    specifications: [{
-      type: Schema.Types.ObjectId,
-      ref: "Specification",
-    }],
+    specifications: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Specification",
+      },
+    ],
     // reviews: [{
     //   type: Schema.Types.ObjectId,
     //   ref: "Review",
     // }],
-    // category: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Category",
-    // },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+    },
   },
   { timestamps: true }
 );

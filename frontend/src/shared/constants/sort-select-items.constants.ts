@@ -1,22 +1,27 @@
 export const SORT_SELECT_ITEMS = [
   {
     label: "Сначала популярные",
-    value: "popular",
+    value: "asc",
+    key: ""
   },
   {
     label: "Сначала дешёвые",
-    value: "-price",
+    value: "asc",
+    key: "price"
   },
   {
     label: "Сначала дорогие",
-    value: "price",
+    value: "desc",
+    key: "price"
   },
   {
     label: "Новинки",
-    value: "created_at",
+    value: "asc",
+    key: "created_at"
   },
   {
     label: "Высокий рейтинг",
-    value: "rating",
+    value: "desc",
+    key: "rating"
   },
 ];

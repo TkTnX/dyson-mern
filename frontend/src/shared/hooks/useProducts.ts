@@ -3,11 +3,12 @@ import { axiosInstance } from "../libs";
 import type { IProduct } from "../types";
 
 export function useProducts() {
-  const getProducts = () =>
+  const getProducts = (params?: Record<string, string>) =>
     useQuery({
-      queryKey: ["get products"],
+      queryKey: ["get products", params],
       queryFn: async (): Promise<IProduct[]> => {
-        const res = await axiosInstance.get("products");
+        console.log(params);
+        const res = await axiosInstance.get("products", { params });
 
         return res.data;
       },

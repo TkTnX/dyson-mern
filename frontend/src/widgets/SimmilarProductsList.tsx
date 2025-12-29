@@ -3,11 +3,13 @@ import { ProductItem } from "../entities";
 import { Button, ErrorMessage, Skeleton } from "../shared/components";
 import { useProducts } from "../shared/hooks";
 
-export const SimmilarProductsList = () => {
-  const { getProducts } = useProducts();
-  const { data, isPending, error } = getProducts();
+interface Props {
+  slug: string;
+}
 
-  // TODO: Получать похожие продукты по категории
+export const SimmilarProductsList = ({ slug }: Props) => {
+  const { getProducts } = useProducts();
+  const { data, isPending, error } = getProducts({ category: slug });
   if (error) return <ErrorMessage message={error.message} />;
 
   return (

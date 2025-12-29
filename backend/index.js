@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { connectToDb } from "./libs/connectToDb.js";
 import productRouter from "./routes/product.route.js";
+import categoryRouter from "./routes/category.route.js";
 import "./models/complectation.model.js";
 import "./models/specification.model.js";
 
@@ -23,3 +24,4 @@ app.listen(PORT, async () => {
 });
 
 app.use("/products", productRouter);
+app.use("/categories", categoryRouter);

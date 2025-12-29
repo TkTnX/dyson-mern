@@ -61,20 +61,18 @@ export const BigProduct = ({ product }: Props) => {
           )}
         </div>
         <div className="flex flex-wrap  lg:flex-col xl:flex-row items-end justify-between  mt-6">
+          <h6 className="font-second text-5xl font-black">
+            {/* TODO: ADD FORMAT FUNCTION */}
+            {product.discount ? product.price - discount! : product.price}Р
+          </h6>
+
           {product.discount && (
-            <h6 className="font-second text-xl lg:text-5xl font-black">
-              {/* TODO: ADD FORMAT FUNCTION */}
-              {product.price - discount!}Р
-            </h6>
+            <p
+              className={`font-second    text-2xl font-black line-through text-[#ababab]   `}
+            >
+              {product.price} Р
+            </p>
           )}
-          <p
-            className={`font-second text-4xl lg:text-5xl font-black ${
-              product.discount &&
-              "line-through text-[#ababab]  text-xs  lg:text-2xl"
-            } `}
-          >
-            {product.price} Р
-          </p>
         </div>
         <div className="flex flex-col sm:flex-row  items-stretch relative z-2 gap-2.5 sm:gap-5 mt-8">
           <ProductCounter className="flex! lg:flex! rounded-sm!" />

@@ -11,12 +11,14 @@ export const ProductPage = () => {
   const { data, isPending, error } = getProduct(productId!);
 
   if (error) return <ErrorMessage message={error.message} />;
-
   return (
     <>
       <Breadcrumbs
         items={[
-          { label: "Каталог", href: "/catalog" },
+          {
+            label: data?.category.name || "",
+            href: `/categories/${data?.category.slug}`,
+          },
           { label: data?.title || "" },
         ]}
       />
@@ -32,11 +34,12 @@ export const ProductPage = () => {
             <BigProduct product={data} />
           </section>
           <BigProductTabs product={data} />
-          <Faq />
-          <div className="container bg-[#e2e2e2] w-full h-190 flex items-center justify-center">
+
+          <Faq className="bg-transparent!" />
+          <div className="container bg-[#e2e2e2] w-full h-190 flex items-center justify-center cursor-pointer">
             <Play size={100} fill="#fff" color="#fff" />
           </div>
-          <SimmilarProductsList />
+          <SimmilarProductsList slug={data.category.slug} />
         </>
       )}
     </>

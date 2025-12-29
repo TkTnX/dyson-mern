@@ -1,3 +1,4 @@
+import type { ICategory } from "./category.type";
 import type { IComplecation } from "./complectation.type";
 import type { ISpecification } from "./specification.type";
 
@@ -12,4 +13,5 @@ export interface IProduct {
 
   complectation: IComplecation[];
   specifications: ISpecification[];
+  category: ICategory;
 }

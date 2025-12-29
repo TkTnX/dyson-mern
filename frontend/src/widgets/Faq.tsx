@@ -2,7 +2,11 @@ import { Plus } from "lucide-react";
 import { FAQ } from "../shared/constants";
 import { useState } from "react";
 
-export const Faq = () => {
+interface Props {
+  className?: string;
+}
+
+export const Faq = ({ className }: Props) => {
   const [open, setOpen] = useState<null | number>(null);
 
   const onClick = (index: number) => {
@@ -14,7 +18,7 @@ export const Faq = () => {
   };
 
   return (
-    <section className="bg-[#f8f8f8]">
+    <section className={`bg-[#f8f8f8] ${className}`}>
       <div className="container py-37.5 ">
         <h2 className="font-black text-2xl sm:text-3xl md:text-5xl font-second">
           FAQ — Часто задаваемые вопросы
