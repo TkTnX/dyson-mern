@@ -19,6 +19,10 @@ const productSchema = new Schema(
     images: {
       type: [String],
     },
+    rating: {
+      type: Number,
+      default: 0,
+    },
     complectation: [
       {
         type: Schema.Types.ObjectId,
@@ -40,7 +44,12 @@ const productSchema = new Schema(
       ref: "Category",
     },
   },
-  { timestamps: true }
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at",
+    },
+  }
 );
 
 export default mongoose.model("Product", productSchema);

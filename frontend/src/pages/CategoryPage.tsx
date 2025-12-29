@@ -8,17 +8,17 @@ import { useState } from "react";
 
 export const CategoryPage = () => {
   const [sortBy, setSortBy] = useState<{ key: string; value: string }>({
-    key: "",
+    key: "_id",
     value: "asc",
   });
+  const sortByValue = `${sortBy.key}-${sortBy.value}`;
+
   const { slug } = useParams();
   const { getProducts } = useProducts();
   const { data, isPending, error } = getProducts({
     category: slug!,
-    sortBy: `${sortBy.key}-${sortBy.value}`,
+    sortBy: sortByValue,
   });
-
-  console.log(sortBy);
 
   if (isPending)
     //   TODO: MOVE TO LOADER COMPONENT
@@ -29,7 +29,6 @@ export const CategoryPage = () => {
     );
 
   if (error) return <ErrorMessage message={error.message} />;
-
   return (
     <>
       <div className="flex items-center justify-center container">
@@ -39,11 +38,11 @@ export const CategoryPage = () => {
           setSort={setSortBy}
           className="flex-1"
           options={SORT_SELECT_ITEMS}
-          sortBy={sortBy || {}}
+          sortBy={sortByValue}
         />
       </div>
       <section className="container">
-        <div className="grid grid-cols-3 gap-5 mt-20">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1 sm:gap-5 mt-20">
           {data.map((product) => (
             <ProductItem product={product} key={product._id} />
           ))}

@@ -18,6 +18,8 @@ app.use(
   })
 );
 
+app.use(express.json());
+
 app.listen(PORT, async () => {
   await connectToDb();
   console.log(`Server is running on port ${PORT}`);

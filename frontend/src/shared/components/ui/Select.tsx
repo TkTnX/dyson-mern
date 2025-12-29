@@ -1,12 +1,12 @@
 import { ChevronDown } from "lucide-react";
 import { type HTMLAttributes } from "react";
-import { SORT_SELECT_ITEMS } from "../../constants";
+import { useSearchParams } from "react-router";
 
 interface Props extends HTMLAttributes<HTMLSelectElement> {
   options: { label: string; value: string; key: string }[];
   className?: string;
   setSort: (obj: { key: string; value: string }) => void;
-  sortBy: { key: string; value: string };
+  sortBy: string;
 }
 
 export const Select = ({
@@ -16,18 +16,24 @@ export const Select = ({
   sortBy,
   ...props
 }: Props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const [key, value] = e.target.value.split("-");
+    setSort({
+      key,
+      value,
+    });
+    setSearchParams({ sortBy: e.target.value });
+    console.log(searchParams.get("sortBy"));
+  };
+
   return (
     <div className="relative group  border border-accent hover:text-accent flex items-center w-fit  cursor-pointer rounded-sm ml-auto mt-12">
       <select
-        defaultValue={
-          SORT_SELECT_ITEMS.find((item) => item.value === sortBy.value)?.value
-        }
-        onChange={(e) =>
-          setSort({
-            key: e.target.value.split("-")[0],
-            value: e.target.value.split("-")[1],
-          })
-        }
+        defaultValue={sortBy}
+        value={sortBy}
+        onChange={onChange}
         className={`w-full  focus-visible:outline-none z-2 relative  py-2 px-6 pr-10 appearance-none cursor-pointer ${className}`}
         {...props}
       >

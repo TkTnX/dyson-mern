@@ -25,8 +25,12 @@ export const ProductItem = ({ product }: Props) => {
                   product.isStock ? "bg-green" : "bg-red-500"
                 }`}
               />
-              <p className="text-xs lg:text-base">
-                {product.isStock ? "В наличии" : "Отсутсвует"}
+              <p
+                className={`text-xs lg:text-base ${
+                  !product.isStock && "text-red-500"
+                }`}
+              >
+                {product.isStock ? "В наличии" : "Отсутствует"}
               </p>
             </div>
             {product.discount && (

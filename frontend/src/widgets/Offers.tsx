@@ -3,10 +3,19 @@ import { ProductItem } from "../entities";
 import { ErrorMessage, Select, Skeleton } from "../shared/components";
 import { SORT_SELECT_ITEMS } from "../shared/constants";
 import { useProducts } from "../shared/hooks";
+import { useState } from "react";
 
 export const Offers = () => {
-  const {getProducts } = useProducts();
-  const {error, data, isPending} = getProducts()
+  const [sortBy, setSortBy] = useState<{ key: string; value: string }>({
+    key: "_id",
+    value: "asc",
+  });
+  const sortByValue = `${sortBy.key}-${sortBy.value}`;
+  
+  const { getProducts } = useProducts();
+  const { error, data, isPending } = getProducts({
+    sortBy: sortByValue,
+  });
   if (error) return <ErrorMessage message={error.message} />;
   return (
     <section className="bg-[#f8f8f8] ">
@@ -14,7 +23,11 @@ export const Offers = () => {
         <h2 className="title">
           Спецпредложения <span className="text-accent">{data?.length}</span>
         </h2>
-        <Select options={SORT_SELECT_ITEMS} />
+        <Select
+          setSort={setSortBy}
+          sortBy={sortByValue}
+          options={SORT_SELECT_ITEMS}
+        />
         {/* TODO: ADD SLIDER */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-5 mt-10">
           {isPending
