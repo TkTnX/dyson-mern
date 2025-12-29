@@ -2,11 +2,10 @@ import Product from "../models/product.model.js";
 import Category from "../models/category.model.js";
 export async function getProducts(req, res) {
   try {
-    const { sortBy, ...query } = req.query;
+    const { sortBy, important, ...query } = req.query;
     let findString = query;
 
     const sort = sortBy?.split("-") || undefined;
-    console.log(sort);
     if (query.category) {
       const category = await Category.findOne({ slug: query.category });
 
@@ -14,7 +13,11 @@ export async function getProducts(req, res) {
 
       findString.category = category._id;
     }
-    console.log(sort);
+
+    if (important) {
+      findString[important] = { $gt: 0 };
+    }
+
     const products = await Product.find(findString)
       .sort(sort ? [sort] : undefined)
       .populate("category");
@@ -47,7 +50,7 @@ export async function getProduct(req, res) {
 
 export async function createProduct(req, res) {
   try {
-    const { category, description, images, price, title } = req.body;
+    const { category, description, images, price, title, discount } = req.body;
     const newProduct = await Product.create({
       category,
       description,
@@ -55,6 +58,7 @@ export async function createProduct(req, res) {
       images,
       price,
       title,
+      discount,
     });
 
     return res.status(201).json(newProduct);

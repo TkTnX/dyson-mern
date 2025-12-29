@@ -1,5 +1,5 @@
 export interface ISpecification {
-    _id: string,
-    label: string,
-    value: string
+	_id: string
+	label: string
+	value: string
 }

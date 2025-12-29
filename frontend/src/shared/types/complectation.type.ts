@@ -1,6 +1,6 @@
 export interface IComplecation {
-    _id: string,
-    title: string,
-    description: string,
-    image: string
+	_id: string
+	title: string
+	description: string
+	image: string
 }
