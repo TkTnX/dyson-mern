@@ -36,8 +36,12 @@
 	--breakpoint-vsm: 475px;
 }
 
+html {
+	@apply scroll-smooth;
+}
+
 body {
-	@apply text-text font-base font-family text-base;
+	@apply text-text font-base font-family scroll-smooth text-base;
 }
 
 .container {

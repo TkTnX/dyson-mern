@@ -1,5 +1,3 @@
-import { Link } from 'react-router'
-
 import { Button } from '../shared/components'
 
 export const Hero = () => {
@@ -14,12 +12,12 @@ export const Hero = () => {
 						Идеальная укладка для всех типов волос вместе с Dyson
 					</p>
 					<Button className='relative z-2 mt-10 p-0! md:mt-22.5'>
-						<Link
-							to={'/catalog'}
+						<a
+							href={'#categories'}
 							className='block px-6.5 py-2 md:px-12.5 md:py-3.75'
 						>
 							Подробнее
-						</Link>
+						</a>
 					</Button>
 				</div>
 				<div className='absolute -right-10 -bottom-10 flex-1 sm:static'>

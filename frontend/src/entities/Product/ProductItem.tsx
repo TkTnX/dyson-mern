@@ -6,13 +6,14 @@ import type { IProduct } from '../../shared/types'
 
 interface Props {
 	product: IProduct
+	className?: string
 }
 
-export const ProductItem = ({ product }: Props) => {
+export const ProductItem = ({ product, className }: Props) => {
 	const discount =
 		product.discount && (product.price / 100) * product.discount
 	return (
-		<div className='relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm'>
+		<div className={`relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm ${className}`}>
 			<Link
 				to={`/products/${product._id}`}
 				className='absolute inset-0'

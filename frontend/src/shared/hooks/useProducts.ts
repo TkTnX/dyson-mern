@@ -7,7 +7,11 @@ export function useProducts() {
 	const getProducts = (params?: Record<string, string>) =>
 		useQuery({
 			queryKey: ['get products', params],
-			queryFn: async (): Promise<IProduct[]> => {
+			queryFn: async (): Promise<{
+				items: IProduct[]
+				totalPages: number
+				totalProducts: number
+			}> => {
 				const res = await axiosInstance.get('products', { params })
 
 				return res.data

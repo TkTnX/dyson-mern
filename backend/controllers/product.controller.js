@@ -2,7 +2,7 @@ import Product from "../models/product.model.js";
 import Category from "../models/category.model.js";
 export async function getProducts(req, res) {
   try {
-    const { sortBy, important, ...query } = req.query;
+    const { sortBy, important, limit, page, ...query } = req.query;
     let findString = query;
 
     const sort = sortBy?.split("-") || undefined;
@@ -18,11 +18,15 @@ export async function getProducts(req, res) {
       findString[important] = { $gt: 0 };
     }
 
+    const totalProducts = await Product.countDocuments();
+    const totalPages = Math.ceil(totalProducts / limit);
     const products = await Product.find(findString)
       .sort(sort ? [sort] : undefined)
+      .skip(+limit * +page)
+      .limit(Number(limit) || undefined)
       .populate("category");
 
-    return res.status(200).json(products);
+    return res.status(200).json({ items: products, totalProducts, totalPages });
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
