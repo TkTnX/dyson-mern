@@ -6,6 +6,7 @@ import { ProductItem } from '../entities'
 import { Breadcrumbs, ErrorMessage, Loader, Select } from '../shared/components'
 import { SORT_SELECT_ITEMS } from '../shared/constants'
 import { useProducts } from '../shared/hooks'
+import { Faq, News, Opinion, Reviews, WhyWe } from '../widgets'
 
 export const CategoryPage = () => {
 	const [page, setPage] = useState(0)
@@ -68,6 +69,11 @@ export const CategoryPage = () => {
 					</p>
 				</div>
 			</section>
+			<Opinion />
+			<WhyWe />
+			<Reviews />
+			<Faq />
+			<News />
 		</>
 	)
 }
