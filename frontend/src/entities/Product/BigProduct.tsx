@@ -2,7 +2,7 @@ import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
 import { ProductCounter } from '../../features'
-import { Button } from '../../shared/components'
+import { Button, Rating } from '../../shared/components'
 import type { IProduct } from '../../shared/types'
 
 interface Props {
@@ -13,7 +13,6 @@ export const BigProduct = ({ product }: Props) => {
 	const [currentImage, setCurrentImage] = useState(0)
 	const discount =
 		product.discount && (product.price / 100) * product.discount
-
 	return (
 		<div className='flex flex-col items-center justify-between gap-4 lg:flex-row lg:items-start'>
 			<div className='relative flex w-fit flex-col-reverse items-start gap-6 sm:flex-row'>
@@ -48,6 +47,7 @@ export const BigProduct = ({ product }: Props) => {
 				<p className='font-second mt-10 text-xs sm:text-sm md:text-base'>
 					{product.description}
 				</p>
+				<Rating className='mt-4' rating={product.rating} />
 				<div className='mt-6 flex items-center justify-between'>
 					<div className='text-green flex items-center gap-2 sm:gap-5'>
 						<div

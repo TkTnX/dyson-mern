@@ -1,5 +1,4 @@
-import { Star } from 'lucide-react'
-
+import { Rating } from '../../shared/components'
 import type { IReview } from '../../shared/types'
 
 interface Props {
@@ -10,20 +9,10 @@ export const ReviewItem = ({ review }: Props) => {
 	return (
 		<div className='flex flex-col items-start gap-2.5 border-b border-[#ababab] py-10 sm:flex-row sm:gap-17.5'>
 			<div className='flex flex-col gap-3.5'>
-				{/* TODO: Тут должен быть настоящий пользователь */}
-				<h4 className='text-xl font-medium'>Ольга</h4>
-				<div className='flex items-center gap-1'>
-					{[...new Array(5)].map((_, index) => (
-						<Star
-							className='h-4 w-4 sm:h-auto sm:w-auto'
-							fill='#000'
-							color='#000'
-							key={index}
-						/>
-					))}
-				</div>
+				<h4 className='text-xl font-medium'>{review.username}</h4>
+				<Rating rating={review.rating} />
 			</div>
-			<div>
+			<div className='flex-1'>
 				<div className='flex items-center justify-between'>
 					<h4 className='text-xl font-semibold'>{review.title}</h4>
 					<p className='text-lg font-light text-[#909090]'>

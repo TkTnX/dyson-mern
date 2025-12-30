@@ -10,6 +10,7 @@ export interface IProduct {
 	discount?: number
 	images: string[]
 	isStock: boolean
+	rating: number
 
 	complectation: IComplecation[]
 	specifications: ISpecification[]

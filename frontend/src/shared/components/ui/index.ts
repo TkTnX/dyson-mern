@@ -5,3 +5,7 @@ export * from './ErrorMessage'
 export * from './Skeleton'
 export * from './Breadcrumbs'
 export * from './Loader'
+export * from "./Rating"
+export * from "./Modal"
+export * from "./Textarea"
+export * from "./FileInput"

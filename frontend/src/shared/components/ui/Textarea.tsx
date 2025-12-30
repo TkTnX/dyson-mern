@@ -1,9 +1,9 @@
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends React.InputHTMLAttributes<HTMLTextAreaElement> {
 	className?: string
 	variant?: 'underlined' | 'bordered'
 }
 
-export const Input = ({
+export const Textarea = ({
 	className,
 	variant = 'underlined',
 	...props
@@ -14,9 +14,8 @@ export const Input = ({
 			: 'border border-[#d9d9d9] px-6 py-2.5'
 
 	return (
-		<input
-			
-			className={` ${style} placeholder:text-[#ababab] focus-within:outline-none ${className}`}
+		<textarea
+			className={` ${style} max-h-100 min-h-50 placeholder:text-[#ababab] focus-within:outline-none ${className}`}
 			{...props}
 		/>
 	)

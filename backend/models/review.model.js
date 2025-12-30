@@ -15,11 +15,10 @@ const reviewModel = new Schema(
       required: true,
     },
     images: [String],
-    // user: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // },
+    username: {
+      type: String,
+      required: true,
+    },
     product: {
       type: Schema.Types.ObjectId,
       ref: "Product",

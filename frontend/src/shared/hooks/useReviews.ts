@@ -1,10 +1,14 @@
-import { useQuery } from '@tanstack/react-query'
+import {
+	type UseMutationOptions,
+	useMutation,
+	useQuery
+} from '@tanstack/react-query'
 
 import { axiosInstance } from '../libs'
-import type { IReview } from '../types'
+import type { CreateReviewType, IReview } from '../types'
 
 export function useReviews() {
-	const getReviews = (params?: Record<string, string>) =>
+	const getReviews = (params?: Record<string, string | undefined>) =>
 		useQuery({
 			queryKey: ['reviews', params],
 			queryFn: async (): Promise<{
@@ -20,7 +24,24 @@ export function useReviews() {
 			}
 		})
 
+	const createReview = (
+		options?: Omit<
+			UseMutationOptions<unknown, unknown, unknown>,
+			'mutationFn' | 'mutationKey'
+		>
+	) =>
+		useMutation({
+			mutationKey: ['create review'],
+			mutationFn: async (body: CreateReviewType) => {
+				const { data } = await axiosInstance.post('reviews', body)
+
+				return data
+			},
+			...options
+		})
+
 	return {
-		getReviews
+		getReviews,
+		createReview
 	}
 }
