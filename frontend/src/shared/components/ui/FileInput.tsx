@@ -4,10 +4,10 @@ import { axiosInstance } from '../../libs'
 
 interface Props {
 	className?: string
-	setImageUrl: React.Dispatch<React.SetStateAction<string>>
+	setImageUrls: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-export const FileInput = ({ className, setImageUrl }: Props) => {
+export const FileInput = ({ className, setImageUrls }: Props) => {
 	const [file, setFile] = useState<File | null>(null)
 
 	const uploadImage = async () => {
@@ -19,7 +19,7 @@ export const FileInput = ({ className, setImageUrl }: Props) => {
 			headers: { 'Content-Type': 'multipart/form-data' }
 		})
 		console.log(res.data)
-		setImageUrl(res.data.url)
+		setImageUrls(prev => [...prev, res.data.url])
 	}
 
 	useEffect(() => {
