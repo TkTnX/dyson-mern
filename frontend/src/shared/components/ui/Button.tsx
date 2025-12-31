@@ -3,7 +3,6 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: 'default' | 'outline'
 }
-
 export const Button = ({
 	children,
 	className,

@@ -1,13 +1,44 @@
+import { useEffect, useState } from 'react'
+
+import { axiosInstance } from '../../libs'
+
 interface Props {
 	className?: string
+	setImageUrl: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const FileInput = ({ className }: Props) => {
+export const FileInput = ({ className, setImageUrl }: Props) => {
+	const [file, setFile] = useState<File | null>(null)
+
+	const uploadImage = async () => {
+		if (!file) return
+		const formData = new FormData()
+		formData.append('image', file)
+
+		const res = await axiosInstance.post('upload', formData, {
+			headers: { 'Content-Type': 'multipart/form-data' }
+		})
+		console.log(res.data)
+		setImageUrl(res.data.url)
+	}
+
+	useEffect(() => {
+		uploadImage()
+	}, [file])
+
 	return (
 		<label
 			className={`cursor-pointer border border-[#d9d9d9] px-6 py-2.5 text-center placeholder:text-[#ababab] focus-within:outline-none ${className}`}
 		>
-			<input accept='image/*' type='file' hidden />
+			<input
+				onChange={e => {
+					if (!e.target.files) return
+					setFile(e.target.files[0])
+				}}
+				accept='image/*'
+				type='file'
+				hidden
+			/>
 			<p className='text-accent underline'>Загрузить фото</p>
 			<p className='text-[#ababab]'>
 				Нажмите кнопку “Загрузить фото” или перетащите фотографию в эту

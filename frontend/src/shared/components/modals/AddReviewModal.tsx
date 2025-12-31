@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const AddReviewModal = ({ setOpen, setReviews, productId }: Props) => {
+	const [imageUrl, setImageUrl] = useState('')
 	const queryClient = useQueryClient()
 	const [rating, setRating] = useState<null | number>(null)
 	const [hoverRating, setHoverRating] = useState<number | null>(null)
@@ -39,7 +40,8 @@ export const AddReviewModal = ({ setOpen, setReviews, productId }: Props) => {
 			username: username as string,
 			text: text as string,
 			title: title as string,
-			productId
+			productId,
+			images: [imageUrl]
 		})
 	}
 
@@ -97,11 +99,20 @@ export const AddReviewModal = ({ setOpen, setReviews, productId }: Props) => {
 					variant='bordered'
 					placeholder='Комментарий'
 				/>
-				<FileInput />
+				<FileInput setImageUrl={setImageUrl} />
 				<Button className='w-fit bg-black hover:opacity-80'>
 					Отправить отзыв
 				</Button>
 			</form>
+			{imageUrl && (
+				<div className='mt-10 flex w-full items-center justify-center'>
+					<img
+						src={`${import.meta.env.VITE_PUBLIC_SERVER_URL}${imageUrl.slice(1)}`}
+						alt='REVIEW'
+						className='h-full w-full max-w-100 rounded-2xl'
+					/>
+				</div>
+			)}
 		</Modal>
 	)
 }

@@ -30,9 +30,9 @@ export const ReviewItem = ({ review }: Props) => {
 				{review.images.length > 0 && (
 					<>
 						<div className='mt-7.5 flex flex-wrap items-center gap-5'>
-							{review.images.map((_, index) => (
+							{review.images.map((image, index) => (
 								<img
-									src='/images/temp/review1.jpg'
+									src={`${import.meta.env.VITE_PUBLIC_SERVER_URL}${image.slice(1)}`}
 									alt='REVIEW'
 									className='h-full max-h-14 w-full max-w-14 rounded-2xl sm:max-h-20 sm:max-w-20'
 									key={index}
