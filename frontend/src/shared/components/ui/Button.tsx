@@ -1,6 +1,4 @@
-import type { HTMLAttributes } from 'react'
-
-interface Props extends HTMLAttributes<HTMLButtonElement> {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	children: React.ReactNode
 	className?: string
 	variant?: 'default' | 'outline'
@@ -19,7 +17,7 @@ export const Button = ({
 
 	return (
 		<button
-			className={`rounded-sm px-6.5 py-2 text-base transition md:px-12.5 md:py-3.75 md:text-2xl ${style} ${className}`}
+			className={`rounded-sm px-6.5 py-2 text-base transition disabled:pointer-events-none disabled:opacity-50 md:px-12.5 md:py-3.75 md:text-2xl ${style} ${className}`}
 			{...props}
 		>
 			{children}

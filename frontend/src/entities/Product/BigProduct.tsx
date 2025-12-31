@@ -1,8 +1,8 @@
 import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
-import { ProductCounter } from '../../features'
-import { Button, Rating } from '../../shared/components'
+import { AddToCartButton, ProductCounter } from '../../features'
+import {  Rating } from '../../shared/components'
 import type { IProduct } from '../../shared/types'
 
 interface Props {
@@ -88,9 +88,7 @@ export const BigProduct = ({ product }: Props) => {
 				</div>
 				<div className='relative z-2 mt-8 flex flex-col items-stretch gap-2.5 sm:flex-row sm:gap-5'>
 					<ProductCounter className='flex! rounded-sm! lg:flex!' />
-					<Button className='hover:bg-accent! flex-1 rounded-t-none bg-black px-0 2xl:rounded-l-none'>
-						В корзину
-					</Button>
+					<AddToCartButton product={product} />
 				</div>
 			</div>
 		</div>

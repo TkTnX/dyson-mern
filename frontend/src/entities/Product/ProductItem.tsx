@@ -1,7 +1,6 @@
 import { Link } from 'react-router'
 
-import { ProductCounter } from '../../features'
-import { Button } from '../../shared/components'
+import { AddToCartButton, ProductCounter } from '../../features'
 import type { IProduct } from '../../shared/types'
 
 interface Props {
@@ -13,7 +12,9 @@ export const ProductItem = ({ product, className }: Props) => {
 	const discount =
 		product.discount && (product.price / 100) * product.discount
 	return (
-		<div className={`relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm ${className}`}>
+		<div
+			className={`relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm ${className}`}
+		>
 			<Link
 				to={`/products/${product._id}`}
 				className='absolute inset-0'
@@ -65,9 +66,7 @@ export const ProductItem = ({ product, className }: Props) => {
 				</div>
 				<div className='relative z-2 flex flex-col items-stretch 2xl:flex-row'>
 					<ProductCounter />
-					<Button className='hover:bg-accent! flex-1 rounded-t-none bg-black px-0 2xl:rounded-l-none'>
-						В корзину
-					</Button>
+					<AddToCartButton product={product} />
 				</div>
 			</div>
 		</div>

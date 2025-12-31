@@ -57,3 +57,22 @@ export async function createReview(req, res) {
     return res.status(500).json("Something went wrong!");
   }
 }
+
+export async function deleteReview(req, res) {
+  try {
+    const reviewId = req.params.id;
+
+    const review = await Review.findById(reviewId);
+
+    if (!review) {
+      return res.status(404).json("Отзыв не найден!");
+    }
+
+    await Review.deleteOne({ _id: reviewId });
+
+    return res.status(204).json("Успешно!");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Something went wrong!");
+  }
+}

@@ -51,9 +51,7 @@ export const Reviews = ({ productId }: Props) => {
 					</div>
 				)}
 
-				{/* * TODO: Вывод отзывов у продукта */}
-				{/* * TODO: Добавление отзывов */}
-				{/* * TODO: Отзыв от пользователя */}
+
 
 				{/* REVIEWS LIST */}
 				<div className='mt-12.5 border-t border-[#ababab]'>

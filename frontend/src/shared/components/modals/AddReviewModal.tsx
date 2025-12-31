@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query'
 import { Star } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { useReviews } from '../../hooks'
 import type { IReview } from '../../types'
@@ -26,13 +26,6 @@ export const AddReviewModal = ({ setOpen, setReviews, productId }: Props) => {
 			setOpen(false)
 		}
 	})
-	useEffect(() => {
-		document.body.style.overflow = 'hidden'
-
-		return () => {
-			document.body.style.overflow = 'unset'
-		}
-	}, [])
 
 	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()

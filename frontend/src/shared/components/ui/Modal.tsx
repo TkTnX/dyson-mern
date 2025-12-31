@@ -1,4 +1,5 @@
 import { X } from 'lucide-react'
+import { useEffect } from 'react'
 
 interface Props {
 	children: React.ReactNode
@@ -7,6 +8,13 @@ interface Props {
 }
 
 export const Modal = ({ children, className, onClose }: Props) => {
+	useEffect(() => {
+		document.body.style.overflow = 'hidden'
+
+		return () => {
+			document.body.style.overflow = 'unset'
+		}
+	}, [])
 	return (
 		<div
 			className={`fixed inset-0 z-20 flex items-center justify-center bg-black/30`}
