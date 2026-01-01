@@ -1,25 +1,25 @@
 import { X } from 'lucide-react'
 
 import { getPrice } from '../../shared/helpers'
-import type { ICartItem } from '../../shared/types'
 import { useCartStore } from '../../shared/stores'
+import type { ICartItem } from '../../shared/types'
 
 interface Props {
 	cartItem: ICartItem
 }
 
 export const CartItem = ({ cartItem }: Props) => {
-	const {removeCartItem} = useCartStore()
+	const { removeCartItem } = useCartStore()
 	const product = cartItem.product
 	const price = getPrice(product)
 	return (
-		<div className='relative flex items-center gap-10 border-b border-b-[#ababab] py-4'>
+		<div className='relative flex flex-wrap items-center gap-10 border-b border-b-[#ababab] py-4'>
 			<img
 				className='h-30 w-30'
 				src={product.images[0]}
 				alt={product.title}
 			/>
-			<div className='text-2xl font-bold'>
+			<div className='text-xl font-bold md:text-2xl'>
 				<h6>{product.title}</h6>
 				<p>
 					{price}Р x{' '}
@@ -29,7 +29,10 @@ export const CartItem = ({ cartItem }: Props) => {
 			<p className='text-accent ml-auto text-5xl font-black'>
 				{price * cartItem.quantity}Р
 			</p>
-			<button onClick={() => removeCartItem(cartItem.product._id)} className='absolute top-4 right-0'>
+			<button
+				onClick={() => removeCartItem(cartItem.product._id)}
+				className='absolute top-4 right-0'
+			>
 				<X />
 			</button>
 		</div>

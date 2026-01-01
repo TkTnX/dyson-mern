@@ -15,3 +15,4 @@ export * from './Delivery'
 export * from './Payment'
 export * from './SimilarProductsList'
 export * from './NewsList'
+export * from "./Navbar"
