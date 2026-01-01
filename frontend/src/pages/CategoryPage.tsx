@@ -44,7 +44,7 @@ export const CategoryPage = () => {
 					options={SORT_SELECT_ITEMS}
 					sortBy={sortByValue}
 				/>
-				<div className='mt-20 grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-5'>
+				<div className='vsm:grid-cols-2 mt-20 grid gap-1 sm:grid-cols-3 sm:gap-5'>
 					{data.items.map(product => (
 						<ProductItem product={product} key={product._id} />
 					))}

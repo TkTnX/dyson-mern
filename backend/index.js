@@ -6,6 +6,7 @@ import productRouter from "./routes/product.route.js";
 import categoryRouter from "./routes/category.route.js";
 import reviewRouter from "./routes/review.route.js";
 import uploadRouter from "./routes/upload.route.js";
+import newsRouter from "./routes/news.route.js"
 import "./models/complectation.model.js";
 import "./models/specification.model.js";
 
@@ -39,3 +40,4 @@ app.use("/products", productRouter);
 app.use("/categories", categoryRouter);
 app.use("/reviews", reviewRouter);
 app.use("/upload", uploadRouter);
+app.use("/news", newsRouter)

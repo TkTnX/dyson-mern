@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import './index.css'
-import { CategoryPage, Homepage, ProductPage } from './pages'
+import { CategoryPage, Homepage, NewsItemPage, NewsPage, ProductPage } from './pages'
 import { Contact, Footer, Header } from './widgets'
 
 const queryClient = new QueryClient()
@@ -25,6 +25,8 @@ createRoot(document.getElementById('root')!).render(
 							Component={CategoryPage}
 							path='/categories/:slug'
 						/>
+						<Route Component={NewsPage} path='/news' />
+						<Route Component={NewsItemPage} path='/news/:id' />
 					</Routes>
 				</main>
 				<Contact />
