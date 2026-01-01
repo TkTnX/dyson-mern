@@ -1,6 +1,7 @@
 import { Link } from 'react-router'
 
 import { AddToCartButton, ProductCounter } from '../../features'
+import { getPrice } from '../../shared/helpers'
 import type { IProduct } from '../../shared/types'
 
 interface Props {
@@ -9,8 +10,6 @@ interface Props {
 }
 
 export const ProductItem = ({ product, className }: Props) => {
-	const discount =
-		product.discount && (product.price / 100) * product.discount
 	return (
 		<div
 			className={`relative flex flex-1 flex-col overflow-hidden rounded-xl bg-white shadow-sm ${className}`}
@@ -48,11 +47,7 @@ export const ProductItem = ({ product, className }: Props) => {
 					</div>
 					<div className='flex flex-wrap items-end justify-between px-2.5 lg:flex-col lg:px-10 xl:flex-row'>
 						<h6 className='font-second text-xl font-black lg:text-5xl'>
-							{/* TODO: ADD FORMAT FUNCTION */}
-							{product.discount
-								? (product.price - discount!).toFixed(0)
-								: product.price.toFixed(0)}
-							Р
+							{getPrice(product)}Р
 						</h6>
 
 						{product.discount && (

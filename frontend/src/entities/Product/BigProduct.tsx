@@ -2,7 +2,8 @@ import { Heart } from 'lucide-react'
 import { useState } from 'react'
 
 import { AddToCartButton, ProductCounter } from '../../features'
-import {  Rating } from '../../shared/components'
+import { Rating } from '../../shared/components'
+import { getPrice } from '../../shared/helpers'
 import type { IProduct } from '../../shared/types'
 
 interface Props {
@@ -11,8 +12,6 @@ interface Props {
 
 export const BigProduct = ({ product }: Props) => {
 	const [currentImage, setCurrentImage] = useState(0)
-	const discount =
-		product.discount && (product.price / 100) * product.discount
 	return (
 		<div className='flex flex-col items-center justify-between gap-4 lg:flex-row lg:items-start'>
 			<div className='relative flex w-fit flex-col-reverse items-start gap-6 sm:flex-row'>
@@ -71,11 +70,7 @@ export const BigProduct = ({ product }: Props) => {
 				</div>
 				<div className='mt-6 flex flex-wrap items-end justify-between lg:flex-col xl:flex-row'>
 					<h6 className='font-second text-5xl font-black'>
-						{/* TODO: ADD FORMAT FUNCTION */}
-						{product.discount
-							? (product.price - discount!).toFixed(0)
-							: product.price.toFixed(0)}
-						Р
+						{getPrice(product)}Р
 					</h6>
 
 					{product.discount && (
